@@ -134,7 +134,7 @@ useGSAP(() => {
 
 
   return (
-    <div>
+    <div className=' pb-[50px] md:pb-[0px]'>
     <section ref={el =>sections.current[0]=el!} className='overflow-hidden w-[95%] md:max-w-6xl mx-auto my-5 md:my-10 p-3 md:p-6 bg-[#c1905a]  shadow-[0px_0px_15px_0px_#492201] relative  rounded-3xl'>
       <div className='w-full md:max-w-2xl mx-auto z-40'>
       <div className=' flex justify-center items-center gap-1 md:gap-3'>
@@ -197,7 +197,7 @@ useGSAP(() => {
       </div>
     
     </section>
-    <section  ref={el =>sections.current[3]=el!} className='overflow-hidden w-[95%]  mb-[80px] md:mb-[0px]  md:max-w-6xl mx-auto my-5 md:my-10 p-3 md:p-6 bg-[#F5F5DC]  shadow-[0px_0px_15px_0px_#492201] relative  rounded-3xl'>
+    <section  ref={el =>sections.current[3]=el!} className='overflow-hidden w-[95%]  md:max-w-6xl mx-auto my-5 md:my-10 p-3 md:p-6 bg-[#F5F5DC]  shadow-[0px_0px_15px_0px_#492201] relative  rounded-3xl'>
       <div className='w-full md:max-w-3xl mx-auto z-40'>
       <div className=' flex flex-wrap justify-center items-center gap-2 md:gap-3'>
         <img ref={el=>leftCups.current[3]=el!} src={espresso} alt="" className='w-8 md:w-14 mb-1 md:mb-2'/>

@@ -57,7 +57,8 @@ function Coffee() {
   };
 
   return (
-    <section className="w-[95%] mb-[80px] md:mb-[0px] md:max-w-6xl mx-auto my-4 md:my-10 ">
+    <div className=' pb-[60px] md:pb-[0px]'>
+    <section className="w-[95%]  md:max-w-6xl mx-auto my-4 md:my-10 ">
       
       
       <div className=" shadow-[0px_0px_15px_0px_#492201] rounded-xl md:rounded-2xl  bg-[#c1905a] p-2 md:p-10">
@@ -246,6 +247,7 @@ function Coffee() {
     </div>
      
     </section>
+    </div>
   );
 }
 
