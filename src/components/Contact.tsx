@@ -1,11 +1,11 @@
-import React, { useEffect, useRef } from "react";
+import  { useEffect, useRef } from "react";
 import "./Contact.css";
 import Coffee from "../assets/coffee-cup.png";
 import { useGSAP } from '@gsap/react';
 import gsap from "gsap";
 function Contact() {
-  const ref=useRef<HTMLInputElement>(null)
-  const inputs=useRef([])
+  const ref = useRef<HTMLInputElement>(null);
+  const inputs = useRef<(HTMLDivElement | HTMLTextAreaElement)[]>([]);
   function handleFocus() {
     ref.current?.focus()
   }
@@ -13,24 +13,27 @@ function Contact() {
     handleFocus()
   },[])
   gsap.registerPlugin(useGSAP);
-  useGSAP(()=>{
-    const tl = gsap.timeline({defaults:{duration:0.5}})
-    tl.from('#contact',{
-      opacity:0,
-      x:-500,
-      ease:'bounce'
-    })
-    inputs.current.forEach(input=>
-      tl.from(input,{
-      opacity:0,
-      x:100,
-      })
-    )
-    tl.from('#submit',{
-      y:50,
-      opacity:0
-    })
-  },[])
+  useGSAP(() => {
+    const tl = gsap.timeline({ defaults: { duration: 0.5 } });
+    
+    tl.from('#contact', {
+      opacity: 0,
+      x: -500,
+      ease: 'bounce'
+    });
+
+    inputs.current.forEach(input => {
+      tl.from(input, {
+        opacity: 0,
+        x: 100,
+      });
+    });
+
+    tl.from('#submit', {
+      y: 50,
+      opacity: 0
+    });
+  }, []);
   return (
     <section id="contact" className=" overflow-hidden mb-[80px] md:mb-[0px] w-[95%] md:max-w-3xl before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-black/40  mx-auto  my-4 md:my-10 p-2 md:p-6 bg-[#c1905a]  shadow-[0px_0px_15px_0px_#492201] relative rounded-lg md:rounded-3xl">
       
@@ -39,7 +42,7 @@ function Contact() {
           <img src={Coffee} className="w-10 md:w-12 mb-3" alt="" /> Contact{" "}
         </h1>
         <form action="" className="mt-3 md:mt-4">
-          <div ref={el=>inputs.current[0]=el} className="flex flex-col-reverse">
+          <div ref={el=>inputs.current[0]=el!} className="flex flex-col-reverse">
             <input
             ref={ref}
             
@@ -53,7 +56,7 @@ function Contact() {
             First Name
             </span>
           </div>
-          <div ref={el=>inputs.current[1]=el} className="flex flex-col-reverse mt-1.5 md:mt-2">
+          <div ref={el=>inputs.current[1]=el!} className="flex flex-col-reverse mt-1.5 md:mt-2">
             <input
               placeholder="Last Name"
               className="peer placeholder:text-[#926c45] outline-none text-base md:text-xl font-bold text-[#c1905a] bg-[#f2e7df] pl-1.5  md:pl-2 py-1.5 md:py-2 duration-500 rounded-lg md:rounded-xl border-2 border-[#c2a28c]  focus:border-none focus:shadow-[0px_0px_15px_0px_#492201]  relative placeholder:duration-500 placeholder:absolute focus:placeholder:pt-10 focus:rounded-md"
@@ -64,7 +67,7 @@ function Contact() {
             Last Name
             </span>
           </div>
-          <div ref={el=>inputs.current[2]=el} className="flex flex-col-reverse mt-1.5 md:mt-2">
+          <div ref={el=>inputs.current[2]=el!} className="flex flex-col-reverse mt-1.5 md:mt-2">
             <input
               placeholder="Your Email"
               className="peer placeholder:text-[#926c45] outline-none text-base md:text-xl font-bold text-[#c1905a] bg-[#f2e7df] pl-1.5  md:pl-2 py-1.5 md:py-2 duration-500 rounded-lg md:rounded-xl border-2 border-[#c2a28c]  focus:border-none focus:shadow-[0px_0px_15px_0px_#492201]  relative placeholder:duration-500 placeholder:absolute focus:placeholder:pt-10 focus:rounded-md"
@@ -75,7 +78,7 @@ function Contact() {
             Your Email
             </span>
           </div>
-          <div ref={el=>inputs.current[3]=el} className="flex flex-col-reverse mt-1.5 md:mt-2">
+          <div ref={el=>inputs.current[3]=el!} className="flex flex-col-reverse mt-1.5 md:mt-2">
             <input
               
               className="peer placeholder:text-[#926c45] outline-none text-base md:text-xl font-bold text-[#c1905a] bg-[#f2e7df] pl-1.5  md:pl-2 py-1.5 md:py-2 duration-500 rounded-lg md:rounded-xl border-2 border-[#c2a28c]  focus:border-none focus:shadow-[0px_0px_10px_0px_#c1905a]  relative placeholder:duration-500 placeholder:absolute focus:placeholder:pt-10 focus:rounded-md"
@@ -88,7 +91,7 @@ function Contact() {
             </span>
           </div>
 
-          <div ref={el=>inputs.current[4]=el} className="flex flex-col-reverse mt-1.5 md:mt-2">
+          <div ref={el=>inputs.current[4]=el!} className="flex flex-col-reverse mt-1.5 md:mt-2">
             <textarea
               
               className="peer placeholder:text-[#926c45] outline-none text-base md:text-xl font-bold text-[#c1905a] resize-none h-[100px] md:h-[150px] bg-[#f2e7df] pl-1.5  md:pl-2 py-1.5 md:py-2 duration-500 rounded-lg md:rounded-xl border-2 border-[#c2a28c]  focus:border-none focus:shadow-[0px_0px_10px_0px_#c1905a]  relative placeholder:duration-500 placeholder:absolute focus:placeholder:pt-10 focus:rounded-md"

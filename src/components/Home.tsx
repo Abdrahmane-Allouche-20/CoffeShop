@@ -1,4 +1,4 @@
-import React from 'react'
+
 import './home.css'
 import HomeBG from '../assets/homeBG.svg'
 import cup from '../assets/cup-of-coffee.png'

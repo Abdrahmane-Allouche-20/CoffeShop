@@ -1,4 +1,4 @@
-import React, { useState ,useRef} from 'react'
+import { useState ,useRef} from 'react'
 import './about.css'
 import cup from '../assets/coffee-cup.png'
 import Grain from '../assets/cafe-ai-genere.png'
@@ -32,11 +32,11 @@ function About() {
   function CloseRooms(){
     showRooms(false)
   }
-  const title=useRef([])
-const sections = useRef([]);
-const leftCups=useRef([])
-const RightCups = useRef([]);
-const descriptions=useRef([]);
+  const title=useRef<HTMLElement[]>([])
+const sections = useRef<HTMLElement[]>([]);
+const leftCups=useRef<HTMLElement[]>([])
+const RightCups = useRef<HTMLElement[]>([]);
+const descriptions=useRef<HTMLElement[]>([]);
 gsap.registerPlugin(useGSAP,ScrollTrigger);
 
 
@@ -135,14 +135,14 @@ useGSAP(() => {
 
   return (
     <div>
-    <section ref={el =>sections.current[0]=el} className='overflow-hidden w-[95%] md:max-w-6xl mx-auto my-5 md:my-10 p-3 md:p-6 bg-[#c1905a]  shadow-[0px_0px_15px_0px_#492201] relative  rounded-3xl'>
+    <section ref={el =>sections.current[0]=el!} className='overflow-hidden w-[95%] md:max-w-6xl mx-auto my-5 md:my-10 p-3 md:p-6 bg-[#c1905a]  shadow-[0px_0px_15px_0px_#492201] relative  rounded-3xl'>
       <div className='w-full md:max-w-2xl mx-auto z-40'>
       <div className=' flex justify-center items-center gap-1 md:gap-3'>
-        <img ref={el=>leftCups.current[0]=el} src={cup} alt="" className='w-10 md:w-14 mb-2 md:mb-3'/>
-      <h1 ref={el=>title.current[0]=el} className='text-2xl md:text-5xl text-[#492201] font-black text-center '>Welcome </h1>
-      <img  ref={el=>RightCups.current[0]=el} src={cup} alt="" className='w-10 md:w-14 mb-2 md:mb-3'/>
+        <img ref={el=>leftCups.current[0]=el!} src={cup} alt="" className='w-10 md:w-14 mb-2 md:mb-3'/>
+      <h1 ref={el=>title.current[0]=el!} className='text-2xl md:text-5xl text-[#492201] font-black text-center '>Welcome </h1>
+      <img  ref={el=>RightCups.current[0]=el!} src={cup} alt="" className='w-10 md:w-14 mb-2 md:mb-3'/>
       </div>
-      <p  ref={el=>descriptions.current[0]=el} className='text-[10px] md:text-lg font-bold text-justify text-align-last-center mt-2 md:mt-4 capitalize text-[#241515]'>
+      <p  ref={el=>descriptions.current[0]=el!} className='text-[10px] md:text-lg font-bold text-justify text-align-last-center mt-2 md:mt-4 capitalize text-[#241515]'>
       welcome to the  <strong className='text-[#f2e7df] font-black text-xs md:text-xl'>Seasons</strong> , 
       where every visit feels like a journey through the year. Our coffee shop is uniquely designed 
       to immerse you in the essence of the four seasons, whether you're in the mood for comfortable
@@ -155,14 +155,14 @@ useGSAP(() => {
       <img src={GrainN} className='absolute bottom-0 right-0 w-[150px] md:w-2/5 opacity-25' alt="" />
       <img src={Grain} className='absolute top-1/2 -translate-y-1/2 left-0 w-[120px] md:w-1/5 opacity-15 md:opacity-35' alt="" />
     </section>
-    <section  ref={el =>sections.current[1]=el} className='overflow-hidden  w-[95%] md:max-w-6xl mx-auto my-5 md:my-10 p-3 md:p-6 bg-[#ba9e79]  shadow-[0px_0px_15px_0px_#492201] relative  rounded-3xl'>
+    <section  ref={el =>sections.current[1]=el!} className='overflow-hidden  w-[95%] md:max-w-6xl mx-auto my-5 md:my-10 p-3 md:p-6 bg-[#ba9e79]  shadow-[0px_0px_15px_0px_#492201] relative  rounded-3xl'>
       <div className='w-full md:max-w-2xl mx-auto z-40'>
       <div className=' flex flex-wrap justify-center items-center gap-0 md:gap-3'>
-        <img ref={el=>leftCups.current[1]=el} src={late} alt="" className='w-8 md:w-14 mb-1 md:mb-2'/>
-      <h1 ref={el=>title.current[1]=el} className='text-base  md:text-5xl text-[#492201] font-black text-center '>What We Provide ?</h1>
-      <img ref={el=>RightCups.current[1]=el} src={late} alt="" className='w-8 md:w-14  mb-1 md:mb-2'/>
+        <img ref={el=>leftCups.current[1]=el!} src={late} alt="" className='w-8 md:w-14 mb-1 md:mb-2'/>
+      <h1 ref={el=>title.current[1]=el!} className='text-base  md:text-5xl text-[#492201] font-black text-center '>What We Provide ?</h1>
+      <img ref={el=>RightCups.current[1]=el!} src={late} alt="" className='w-8 md:w-14  mb-1 md:mb-2'/>
       </div>
-      <p ref={el=>descriptions.current[1]=el} className='text-[10px] md:text-lg font-bold text-justify text-align-last-center mt-2 md:mt-4 capitalize text-[#241515]'>
+      <p ref={el=>descriptions.current[1]=el!} className='text-[10px] md:text-lg font-bold text-justify text-align-last-center mt-2 md:mt-4 capitalize text-[#241515]'>
       At <strong className='text-[#f2e7df] font-black text-xs md:text-xl'>Seasons</strong>, 
       we bring the essence of the four seasons to life. Enjoy uniquely themed rooms with authentic seasonal
        weather—whether it's the warmth of summer, the cool breeze of autumn, the chill of winter, or the 
@@ -174,15 +174,15 @@ useGSAP(() => {
       <img src={Drinks} className='absolute bottom-0 md:-bottom-10 right-0 w-[150px] opacity-25' alt="" />
       <img src={topCup} className='absolute top-1/2 -translate-y-1/2 -left-4 md:-left-8 w-[130px] md:w-[30%] opacity-25 md:opacity-35' alt="" />
     </section>
-    <section  ref={el =>sections.current[2]=el} className='overflow-hidden w-[95%] md:max-w-6xl mx-auto my-5 md:my-10 p-3 md:p-6 bg-[#f3ddc1]  shadow-[0px_0px_15px_0px_#492201] relative  rounded-3xl'>
+    <section  ref={el =>sections.current[2]=el!} className='overflow-hidden w-[95%] md:max-w-6xl mx-auto my-5 md:my-10 p-3 md:p-6 bg-[#f3ddc1]  shadow-[0px_0px_15px_0px_#492201] relative  rounded-3xl'>
       <div className='w-full md:max-w-2xl mx-auto z-40'>
       <div className=' flex justify-center items-center gap-1 md:gap-3'>
-        <img ref={el=>leftCups.current[2]=el} src={cappuccino} alt="" className='w-8 md:w-14 mb-1 md:mb-2'/>
-      <h1 ref={el=>title.current[2]=el} className='text-xl  md:text-5xl text-[#492201] font-black text-center '>How is That ?</h1>
+        <img ref={el=>leftCups.current[2]=el!} src={cappuccino} alt="" className='w-8 md:w-14 mb-1 md:mb-2'/>
+      <h1 ref={el=>title.current[2]=el!} className='text-xl  md:text-5xl text-[#492201] font-black text-center '>How is That ?</h1>
       
-      <img ref={el=>leftCups.current[2]=el} src={cappuccino} alt="" className='w-8 md:w-14 mb-1 md:mb-2'/>
+      <img ref={el=>leftCups.current[2]=el!} src={cappuccino} alt="" className='w-8 md:w-14 mb-1 md:mb-2'/>
       </div>
-      <p ref={el=>descriptions.current[2]=el} className='text-[10px] md:text-lg font-bold text-justify text-align-last-center   mt-4 capitalize text-[#241515]'>
+      <p ref={el=>descriptions.current[2]=el!} className='text-[10px] md:text-lg font-bold text-justify text-align-last-center   mt-4 capitalize text-[#241515]'>
       at <strong className='text-[#492201] font-black text-xs md:text-xl'>Seasons</strong>, each room is themed to represent a different season. Guests can choose a room based on their favorite
        season and enjoy an experience that reflects that time of year.
         </p>
@@ -197,14 +197,14 @@ useGSAP(() => {
       </div>
     
     </section>
-    <section  ref={el =>sections.current[3]=el} className='overflow-hidden w-[95%]  mb-[80px] md:mb-[0px]  md:max-w-6xl mx-auto my-5 md:my-10 p-3 md:p-6 bg-[#F5F5DC]  shadow-[0px_0px_15px_0px_#492201] relative  rounded-3xl'>
+    <section  ref={el =>sections.current[3]=el!} className='overflow-hidden w-[95%]  mb-[80px] md:mb-[0px]  md:max-w-6xl mx-auto my-5 md:my-10 p-3 md:p-6 bg-[#F5F5DC]  shadow-[0px_0px_15px_0px_#492201] relative  rounded-3xl'>
       <div className='w-full md:max-w-3xl mx-auto z-40'>
       <div className=' flex flex-wrap justify-center items-center gap-2 md:gap-3'>
-        <img ref={el=>leftCups.current[3]=el} src={espresso} alt="" className='w-8 md:w-14 mb-1 md:mb-2'/>
-      <h1 ref={el=>title.current[3]=el} className='text-lg  md:text-5xl text-[#492201] font-black text-center '>Why Us?</h1>
-      <img  ref={el=>RightCups.current[3]=el} src={espresso} alt="" className='w-8 md:w-14 mb-1 md:mb-2'/>
+        <img ref={el=>leftCups.current[3]=el!} src={espresso} alt="" className='w-8 md:w-14 mb-1 md:mb-2'/>
+      <h1 ref={el=>title.current[3]=el!} className='text-lg  md:text-5xl text-[#492201] font-black text-center '>Why Us?</h1>
+      <img  ref={el=>RightCups.current[3]=el!} src={espresso} alt="" className='w-8 md:w-14 mb-1 md:mb-2'/>
       </div>
-      <p  ref={el=>descriptions.current[3]=el} className='text-[10px] md:text-lg font-bold text-justify text-align-last-center mt-2 md:mt-4 capitalize text-[#7B3F00]'>
+      <p  ref={el=>descriptions.current[3]=el!} className='text-[10px] md:text-lg font-bold text-justify text-align-last-center mt-2 md:mt-4 capitalize text-[#7B3F00]'>
       At <strong className='text-[#241515] font-black text-xs md:text-xl'>Seasons</strong>, we’re dedicated to offering our cherished clients a one of a kind experience you won’t find 
       anywhere else. We go the extra mile to provide those special touches that make your time with us truly 
       memorable. From unique seasonal room themes to thoughtful, personalized details, we ensure every aspect

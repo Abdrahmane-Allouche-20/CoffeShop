@@ -1,4 +1,4 @@
-import React, {  useLayoutEffect, useRef } from "react";
+
 import Coffee from "../assets/cup.png";
 import { NavLink, Link } from "react-router-dom";
 import "../App.css";

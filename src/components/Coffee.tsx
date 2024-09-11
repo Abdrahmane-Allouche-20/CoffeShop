@@ -1,4 +1,4 @@
-import React, { useContext, useState ,useRef} from "react";
+import { useContext, useState ,useRef} from "react";
 import CoffeeCupTitle from "../assets/CoffeTitle.png";
 import { CoffeeContext } from "../context/context";
 import Sugar from "../assets/coffee-bag.png";
@@ -7,21 +7,16 @@ import Sizes from "../assets/coffee.png";
 import fire from "../assets/fire.png";
 import ice from "../assets/ice-cube.png";
 import CoffeeAnimation from '../assets/coffeeAnimation.gif'
-import SomethingWrong from '../assets/Error.gif'
+
 import { useGSAP } from '@gsap/react';
 import gsap from "gsap";
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 function Coffee() {
   const [Coffee, setCoffee] = useState(true);
-  interface CoffeeType {
-    loading: boolean;
-    error: string | null;
-    hotCoffee: { id: string; title: string; ingredients: string[]; image: string }[];
-    icedCoffee: { id: string; title: string; ingredients: string[]; image: string }[];
-  }
+  
   gsap.registerPlugin(useGSAP,ScrollTrigger)
-  const hotCoffees=useRef([])
-  const IcedCoffees=useRef([])
+  const hotCoffees=useRef<HTMLDivElement[]>([])
+  const IcedCoffees=useRef<HTMLDivElement[]>([])
   function handleAnimation() {
     const coffeeItems = Coffee ? hotCoffees.current : IcedCoffees.current;
     
@@ -55,18 +50,16 @@ function Coffee() {
   })
   handleAnimation()
   },[])
-  const { loading, error, hotCoffee,icedCoffee } = useContext<CoffeeType>(CoffeeContext);
+  const { loading, hotCoffee, icedCoffee } = useContext(CoffeeContext) || {
+    loading: true,
+    hotCoffee: [],
+    icedCoffee: []
+  };
 
   return (
     <section className="w-[95%] mb-[80px] md:mb-[0px] md:max-w-6xl mx-auto my-4 md:my-10 ">
-      {error?
-      <div className="mt-6 flex-col flex justify-center items-center">
-      <h1 className="capitalize text-center md:text-4xl text-lg font-black text-[#492201]">
-      Ooops ! Something Went Wrong ...
-      </h1>
-     <img src={SomethingWrong} className="w-[200px] mt-4" alt="" />
-    </div>
-      :
+      
+      
       <div className=" shadow-[0px_0px_15px_0px_#492201] rounded-xl md:rounded-2xl  bg-[#c1905a] p-2 md:p-10">
       <h1 id="title" className="text-2xl md:text-4xl text-[#492201] font-black flex items-center gap-1 md:gap-2">
         <img  src={CoffeeCupTitle} className="w-10 md:w-14 mb-1 md:mb-2" alt="" /> Our Coffee
@@ -140,9 +133,9 @@ function Coffee() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-6">
         {Coffee
           ? hotCoffee && hotCoffee.length > 0
-            ? hotCoffee.map((hot:any,index) => (
+            ? hotCoffee.map((hot,index) => (
                 <div
-                ref={el=>hotCoffees.current[index]=el}
+                ref={el=>hotCoffees.current[index]=el!}
                   key={hot.id}
                   
                   className="col-span-1 p-2 md:p-3  shadow-[0px_0px_15px_0px_#492201] border-2 md:border-4 border-[#492201] rounded-xl md:rounded-2xl overflow-hidden bg-[#D2B48C]"
@@ -195,9 +188,9 @@ function Coffee() {
               ))
             : null
           : icedCoffee && icedCoffee.length > 0
-          ? icedCoffee.map((ice:any,index) => (
+          ? icedCoffee.map((ice,index) => (
               <div
-              ref={el=>IcedCoffees.current[index]=el}
+              ref={el=>IcedCoffees.current[index]=el!}
                 key={ice.id}
                 className="col-span-1 p-2 md:p-3  shadow-[0px_0px_15px_0px_#492201] border-2 md:border-4 border-[#492201] rounded-xl md:rounded-2xl overflow-hidden bg-[#D2B48C]"
               >
@@ -213,7 +206,7 @@ function Coffee() {
                 </h1>
                 <ul className="flex flex-col mx-2 md:mx-4 gap-1 md:gap-3 mt-3 md:mt-4">
                   {ice.ingredients
-                    ? ice.ingredients.slice(0, 1).map((ingredient, index) => (
+                    ? ice.ingredients.slice(0, 1).map((ingredient, index:number) => (
                         <li
                           key={index}
                           className="flex items-center gap-2 text-base md:text-lg font-bold text-[#492201]"
@@ -250,7 +243,7 @@ function Coffee() {
       </div>
       }
       
-    </div>}
+    </div>
      
     </section>
   );

@@ -1,13 +1,21 @@
 import { createContext, useState, ReactNode, useEffect } from "react";
 
-interface CoffeeContextType {
-  hotCoffee: any; // Ideally replace `any` with the correct type structure
-  icedCoffee: any;
-  loading: boolean;
-  error: string | null;
-  FetchData: () => Promise<void>;
+// Define the type for a coffee item
+
+
+// Define the CoffeeContextType with specific types
+export interface CoffeeItem {
+  id: string;
+  title: string;
+  image: string;
+  ingredients: string[];
 }
 
+export interface CoffeeContextType {
+  loading: boolean|null;
+  hotCoffee: CoffeeItem[];
+  icedCoffee: CoffeeItem[];
+}
 export const CoffeeContext = createContext<CoffeeContextType | null>(null);
 
 interface GlobalStateProps {
@@ -15,28 +23,26 @@ interface GlobalStateProps {
 }
 
 function GlobalState({ children }: GlobalStateProps) {
-  const [hotCoffee, setHotCoffee] = useState<any>({});
-  const [icedCoffee, setIcedCoffee] = useState<any>({});
-  const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<string | null>(null);
-  
-  async function FetchData() {
+  const [hotCoffee, setHotCoffee] = useState<CoffeeItem[]>([]);
+  const [icedCoffee, setIcedCoffee] = useState<CoffeeItem[]>([]);
+  const [loading, setLoading] = useState<boolean | null>(false);
+
+
+  async function FetchData(): Promise<void> {
     setLoading(true);
     try {
       const responseIced = await fetch('https://api.sampleapis.com/coffee/iced');
-      const dataIced = await responseIced.json();
-      if (dataIced) {
-        setIcedCoffee(dataIced);
-      }
+      const dataIced: CoffeeItem[] = await responseIced.json();
+      setIcedCoffee(dataIced);
+
       const responseHot = await fetch('https://api.sampleapis.com/coffee/hot');
-      const dataHot = await responseHot.json();
-      if (dataHot) {
-        setHotCoffee(dataHot);
-      }
+      const dataHot: CoffeeItem[] = await responseHot.json();
+      setHotCoffee(dataHot);
+
       setLoading(false);
-    } catch (e: any) {
+    } catch {
       setLoading(false);
-      setError(e.message);
+ 
     }
   }
 
@@ -45,9 +51,8 @@ function GlobalState({ children }: GlobalStateProps) {
   }, []);
 
   return (
-    <CoffeeContext.Provider value={{ hotCoffee, icedCoffee, error, loading, FetchData }}>
-       {children}
-      
+    <CoffeeContext.Provider value={{ hotCoffee, icedCoffee, loading,  }}>
+      {children}
     </CoffeeContext.Provider>
   );
 }
