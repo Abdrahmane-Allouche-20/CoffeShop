@@ -1,0 +1,10 @@
+#contact{
+  background: url('../assets/bottomBackground.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
+  
+}
+.text-Stroke{
+  -webkit-text-stroke: 1px #452c11;
+}

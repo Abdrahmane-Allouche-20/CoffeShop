@@ -1,0 +1,11 @@
+body{
+  background-color: #f2e7df;
+  min-height: 100vh;
+  height: 100%;
+  overflow-x: hidden;
+}
+html{
+  min-height: 100vh;
+  height: 100%;
+}
+/*#FEECB3*/
