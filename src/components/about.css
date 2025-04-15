@@ -1,8 +1,0 @@
-.text-align-last-center {
-  text-align-last: center;
-  -webkit-text-align-last: center; /* For older Safari */
-}
-#rooms{
-  color: transparent;
-  -webkit-text-stroke: 3px #fff;
-}

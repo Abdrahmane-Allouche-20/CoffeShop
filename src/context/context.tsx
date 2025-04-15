@@ -5,10 +5,10 @@ import { createContext, useState, ReactNode, useEffect } from "react";
 
 // Define the CoffeeContextType with specific types
 export interface CoffeeItem {
-  id: string;
+  id: number;
   title: string;
   image: string;
-  ingredients: string[];
+  
 }
 
 export interface CoffeeContextType {

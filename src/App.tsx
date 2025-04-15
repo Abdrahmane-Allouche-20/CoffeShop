@@ -1,15 +1,15 @@
 import './App.css'
-import Header from './components/Header.js'
+import Header from './pages/Header.js'
 import { Routes,Route } from 'react-router-dom'
-import Home from './components/Home.js'
-import About from './components/About.js'
-import Contact from './components/Contact.js'
-import Coffee from './components/Coffee.js'
+import Home from './pages/Home.js'
+import About from './pages/About.js'
+import Contact from './pages/Contact.js'
+import Coffee from './pages/Coffee.js'
 function App() {
 
 
   return (
-    <div>
+    <>
     <Header/>
     <Routes>
       <Route path='/' element={<Home/>}/>
@@ -17,7 +17,7 @@ function App() {
       <Route path='/Contact' element={<Contact/>}/>
       <Route path='/Coffee' element={<Coffee/>}/>
     </Routes>
-    </div>
+    </>
   )
 }
 

@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+.text-align-last-center {
+    text-align-last: center;
+    -webkit-text-align-last: center; /* For older Safari */
+  }
+  
